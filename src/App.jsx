@@ -1,114 +1,59 @@
-// import { useState } from 'react'
-// import './App.css'
-// import Navbar from "./components/Navbar";
-// import Sidebar from './compenents/Sidebar';
-// import NotFound from './pages/NotFound';
-
-
-// function App() {
-
-//   return (
-//     <>
-//        <Navbar />
-//        <Sidebar />
-
-//             <Routes>
-
-//                 <Route
-//                     path="/"
-//                     element={<ProductList products={products} addCart={addCart} />}
-//                 />
-
-//                 <Route
-//                     path="/add"
-//                     element={<AddProduct addProduct={addProduct} />}
-//                 />
-
-//                 <Route
-//                     path="/cart"
-//                     element={<Cart
-//                         cart={cart}
-//                         onRemove={removeCart}
-//                         total={getTotal()}
-//                         />}
-//                 />
-
-//                 <Route
-//                     path="*"
-//                     element={<NotFound />} />
-
-//             </Routes>
-//     </>
-//   )
-// }
-
-// export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
+import { Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-// import NotFound from './pages/NotFound';
+import Dashboard from './pages/Dashboard';
 
-// import PatientList from './pages/Patients/PatientList';
-// import PatientDetail from './pages/Patients/PatientDetail';
-// import PatientForm from './pages/Patients/PatientForm';
+import PatientsList from './pages/Patients/PatientsList';
+import PatientForm from './pages/Patients/PatientForm';
+import PatientDetails from './pages/Patients/PatientDetails';
 
-// import MedecinList from './pages/Medecins/MedecinList';
-// import MedecinDetail from './pages/Medecins/MedecinDetail';
-// import MedecinForm from './pages/Medecins/MedecinForm';
+import MedecinsList from './pages/Medecins/MedecinsList';
+import MedecinForm from './pages/Medecins/MedecinForm';
+import MedecinDetails from './pages/Medecins/MedecinDetails';
 
-// import RdvList from './pages/RendezVous/RdvList';
-// import RdvDetail from './pages/RendezVous/RdvDetail';
-// import RdvForm from './pages/RendezVous/RdvForm';
+import RendezVousList from './pages/RendezVous/RendezVousList';
+import RendezVousForm from './pages/RendezVous/RendezVousForm';
+import RendezVousDetails from './pages/RendezVous/RendezVousDetails';
 
-// import DossierList from './pages/Dossiers/DossierList';
-// import DossierDetail from './pages/Dossiers/DossierDetail';
-// import DossierForm from './pages/Dossiers/DossierForm';
+import DossiersList from './pages/Dossiers/DossiersList';
+import DossierForm from './pages/Dossiers/DossierForm';
+import DossierDetails from './pages/Dossiers/DossierDetails';
+import About from "./pages/About";
+
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Sidebar/>
-    
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
+    <>
+      <div className="app">
+        <Sidebar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
 
-        {/* <Route path="/patients" element={<PatientList />} />
-        <Route path="/patients/new" element={<PatientForm />} />
-        <Route path="/patients/edit/:id" element={<PatientForm />} />
-        <Route path="/patients/:id" element={<PatientDetail />} />
+            <Route path="/patients" element={<PatientsList />} />
+            <Route path="/patients/add" element={<PatientForm />} />
+            <Route path="/patients/edit/:id" element={<PatientForm />} />
+            <Route path="/patients/:id" element={<PatientDetails />} />
 
-        <Route path="/medecins" element={<MedecinList />} />
-        <Route path="/medecins/new" element={<MedecinForm />} />
-        <Route path="/medecins/edit/:id" element={<MedecinForm />} />
-        <Route path="/medecins/:id" element={<MedecinDetail />} />
+            <Route path="/medecins" element={<MedecinsList />} />
+            <Route path="/medecins/add" element={<MedecinForm />} />
+            <Route path="/medecins/edit/:id" element={<MedecinForm />} />
+            <Route path="/medecins/:id" element={<MedecinDetails />} />
 
-        <Route path="/rendez-vous" element={<RdvList />} />
-        <Route path="/rendez-vous/new" element={<RdvForm />} />
-        <Route path="/rendez-vous/edit/:id" element={<RdvForm />} />
-        <Route path="/rendez-vous/:id" element={<RdvDetail />} />
+            <Route path="/rendezvous" element={<RendezVousList />} />
+            <Route path="/rendezvous/add" element={<RendezVousForm />} />
+            <Route path="/rendezvous/edit/:id" element={<RendezVousForm />} />
+            <Route path="/rendezvous/:id" element={<RendezVousDetails />} />
 
-        <Route path="/dossiers" element={<DossierList />} />
-        <Route path="/dossiers/new" element={<DossierForm />} />
-        <Route path="/dossiers/edit/:id" element={<DossierForm />} />
-        <Route path="/dossiers/:id" element={<DossierDetail />} /> */}
-      </Routes>
-    </BrowserRouter>
+            <Route path="/dossiers" element={<DossiersList />} />
+            <Route path="/dossiers/add" element={<DossierForm />} />
+            <Route path="/dossiers/edit/:id" element={<DossierForm />} />
+            <Route path="/dossiers/:id" element={<DossierDetails />} />
+            <Route path="/about" element={<About/>}/>
+          </Routes>
+        </main>
+      </div>
+    </>
   );
 }
 

@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api/axios';
 import './RendezVous.css';
+import Sidebar from "../../components/Sidebar";
+
 
 const schema = yup.object({
   date: yup.string().required('Date requise'),
@@ -31,6 +33,8 @@ function RendezVousForm() {
   };
 
   return (
+    <>
+        <Sidebar/>
     <div className="page-container">
       <h1>{id ? 'Modifier' : 'Ajouter'} un Rendez-vous</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -57,6 +61,7 @@ function RendezVousForm() {
         <button type="submit" className="btn-primary">Enregistrer</button>
       </form>
     </div>
+    </>
   );
 }
 

@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
+import Sidebar from '../components/Sidebar'; 
 
 function Dashboard() {
+
+
+
+  
   const cards = [
     { title: 'Patients', desc: 'Gérer les patients', link: '/patients', icon: '👤' },
     { title: 'Médecins', desc: 'Gérer les médecins', link: '/medecins', icon: '👨‍⚕️' },
@@ -10,7 +15,11 @@ function Dashboard() {
   ];
 
   return (
+    <>
+    <Sidebar/>
+    
     <div className="dashboard">
+      
       <h1>Tableau de bord</h1>
       <p>Bienvenue dans HealthCare+</p>
       <div className="dashboard-cards">
@@ -23,6 +32,8 @@ function Dashboard() {
         ))}
       </div>
     </div>
+    </>
+
   );
 }
 

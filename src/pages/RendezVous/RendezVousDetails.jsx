@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../../api/axios';
 import './RendezVous.css';
+import Sidebar from "../../components/Sidebar";
+
 
 function RendezVousDetails() {
   const { id } = useParams();
@@ -14,6 +16,8 @@ function RendezVousDetails() {
   if (!rdv) return <p>Chargement...</p>;
 
   return (
+    <>
+    <Sidebar/>
     <div className="page-container">
       <h1>Détails du Rendez-vous</h1>
       <div className="details-card">
@@ -25,6 +29,7 @@ function RendezVousDetails() {
       </div>
       <Link to="/rendezvous" className="btn-primary">Retour</Link>
     </div>
+    </>
   );
 }
 

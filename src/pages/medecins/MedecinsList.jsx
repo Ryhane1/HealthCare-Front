@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axios";
 import "./Medecins.css";
+import Sidebar from "../../components/Sidebar";
+
 
 function MedecinsList() {
 
@@ -9,11 +11,8 @@ function MedecinsList() {
 
 
     useEffect(() => {
-
         loadData();
-
     }, []);
-
 
     const loadData = async () => {
 
@@ -43,94 +42,64 @@ function MedecinsList() {
         if (!confirmation) return;
 
         try {
-
             await api.delete(`/medecin/${id}`);
-
             loadData();
-
         } catch (error) {
-
             console.error(error);
-
         }
-
     };
 
 
     return (
-
+        <>
+        <Sidebar/>
         <div className="medecins-container">
 
             <div className="medecins-header">
 
                 <h1>Liste des Médecins</h1>
-
-                <Link
-                    to="/medecins/add"
-                    className="btn-add"
-                >
+                <Link to="/medecins/add" className="btn-add">
                     + Ajouter
                 </Link>
 
             </div>
 
-
             <table>
-
                 <thead>
-
                     <tr>
-
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Spécialité</th>
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Actions</th>
-
                     </tr>
-
                 </thead>
 
-
                 <tbody>
-
                     {Array.isArray(medecins) && medecins.length > 0 ? (
-
                         medecins.map((m) => (
-
                             <tr key={m.id}>
-
                                 <td>{m.id}</td>
-
                                 <td>{m.nom}</td>
-
                                 <td>{m.specialite}</td>
-
                                 <td>{m.email}</td>
-
                                 <td>{m.telephone}</td>
-
                                 <td>
-
                                     <Link
                                         to={`/medecins/${m.id}`}
                                         className="btn-info"
                                     >
                                         Voir
                                     </Link>
-
                                     {" "}
-
                                     <Link
                                         to={`/medecins/edit/${m.id}`}
                                         className="btn-warning"
                                     >
                                         Modifier
                                     </Link>
-
                                     {" "}
-
                                     <button
                                         className="btn-danger"
                                         onClick={() =>
@@ -165,6 +134,7 @@ function MedecinsList() {
             </table>
 
         </div>
+        </>
 
     );
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axios";
 import "./RendezVous.css";
+import Sidebar from "../../components/Sidebar";
 
 function RendezVousList() {
 
@@ -51,6 +52,8 @@ function RendezVousList() {
 
 
     return (
+        <>
+        <Sidebar/>
 
         <div className="container">
 
@@ -156,6 +159,8 @@ function RendezVousList() {
             </table>
 
         </div>
+
+        </>
 
     );
 }

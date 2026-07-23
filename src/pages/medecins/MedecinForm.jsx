@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api/axios';
 import './Medecins.css';
+import Sidebar from "../../components/Sidebar";
+
 
 const schema = yup.object({
   nom: yup.string().required('Nom requis'),
@@ -31,6 +33,8 @@ function MedecinForm() {
   };
 
   return (
+    <>
+        <Sidebar/>
     <div className="page-container">
       <h1>{id ? 'Modifier' : 'Ajouter'} un Médecin</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -57,6 +61,7 @@ function MedecinForm() {
         <button type="submit" className="btn-primary">Enregistrer</button>
       </form>
     </div>
+    </>
   );
 }
 

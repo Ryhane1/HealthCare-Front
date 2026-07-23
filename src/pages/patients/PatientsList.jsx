@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axios";
+import Sidebar from "../../components/Sidebar";
+
 
 import "./Patients.css";
 
@@ -8,15 +10,11 @@ function PatientsList() {
 
     const [patients, setPatients] = useState([]);
 
-
     const loadPatients = async () => {
-
         try {
-
             const response = await api.get("/patient");
 
             setPatients(response.data.content);
-
         }
         catch (error) {
 
@@ -25,7 +23,6 @@ function PatientsList() {
         }
 
     };
-
 
     useEffect(() => {
 
@@ -59,6 +56,8 @@ function PatientsList() {
 
 
     return (
+        <>
+        <Sidebar/>
 
         <div className="patients-container">
 
@@ -167,6 +166,8 @@ function PatientsList() {
             </table>
 
         </div>
+
+        </>
 
     );
 

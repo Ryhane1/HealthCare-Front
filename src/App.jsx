@@ -18,17 +18,23 @@ import DossiersList from './pages/Dossiers/DossiersList';
 import DossierForm from './pages/Dossiers/DossierForm';
 import DossierDetails from './pages/Dossiers/DossierDetails';
 import About from "./pages/About";
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 import './App.css';
+
 
 function App() {
   return (
     <>
       <div className="app">
-        <Sidebar />
+        
+        
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
 
             <Route path="/patients" element={<PatientsList />} />
             <Route path="/patients/add" element={<PatientForm />} />

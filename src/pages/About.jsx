@@ -1,8 +1,11 @@
 // import "./About.css";
+import Sidebar from "../components/Sidebar";
 
 function About() {
 
     return (
+        <>
+        <Sidebar/>
 
         <div className="about-container">
 
@@ -118,6 +121,8 @@ function About() {
 
 
         </div>
+
+        </>
 
     );
 

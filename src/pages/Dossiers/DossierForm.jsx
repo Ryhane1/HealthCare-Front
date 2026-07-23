@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api/axios';
 import './Dossiers.css';
+import Sidebar from "../../components/Sidebar";
+
 
 const schema = yup.object({
   patientId: yup.number().required('Patient requis'),
@@ -31,6 +33,8 @@ function DossierForm() {
   };
 
   return (
+    <>
+    <Sidebar/>
     <div className="page-container">
       <h1>{id ? 'Modifier' : 'Ajouter'} un Dossier</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -57,6 +61,7 @@ function DossierForm() {
         <button type="submit" className="btn-primary">Enregistrer</button>
       </form>
     </div>
+    </>
   );
 }
 

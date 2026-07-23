@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axios";
 import "./Dossiers.css";
+import Sidebar from "../../components/Sidebar";
 
 function DossiersList() {
 
@@ -56,7 +57,8 @@ function DossiersList() {
 
 
     return (
-
+        <>
+        <Sidebar/>
         <div className="container">
 
             <div className="header">
@@ -161,6 +163,7 @@ function DossiersList() {
             </table>
 
         </div>
+        </>
 
     );
 

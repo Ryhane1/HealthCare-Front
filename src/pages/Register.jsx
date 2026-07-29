@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import "./Register.css";
+import "./register.css";
 
 function Register() {
 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        username: "",
+        nom : "",
         email: "",
         password: "",
-        role: "ADMIN"
+        role: ""
     });
 
     const [message, setMessage] = useState("");
@@ -25,6 +25,7 @@ function Register() {
         });
 
     };
+
 
     const handleSubmit = async (e) => {
 
@@ -43,7 +44,7 @@ function Register() {
 
             setTimeout(() => {
 
-                navigate("/login");
+                navigate("/");
 
             }, 2000);
 
@@ -75,7 +76,7 @@ function Register() {
 
                 <input
                     type="text"
-                    name="username"
+                    name="nom"
                     placeholder="Nom d'utilisateur"
                     onChange={handleChange}
                 />

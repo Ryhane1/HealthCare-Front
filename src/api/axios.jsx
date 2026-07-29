@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: "http://localhost:8080",
     headers: {
         "Content-Type": "application/json",
     },
 });
 
-// Intercepteur de requête
 api.interceptors.request.use(
     (config) => {
 
@@ -22,7 +21,6 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Intercepteur de réponse
 api.interceptors.response.use(
     (response) => response,
     (error) => {
@@ -42,7 +40,7 @@ api.interceptors.response.use(
                 localStorage.removeItem("username");
                 localStorage.removeItem("role");
 
-                window.location.href = "/login";
+                window.location.href = "/";
                 break;
 
             case 403:

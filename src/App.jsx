@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 
 import PatientsList from './pages/Patients/PatientsList';
@@ -22,13 +21,15 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 import './App.css';
+import PrivateRoute from "./guards/PrivateRoute.jsx";
+import RoleGuard from "./guards/RoleGuard.jsx";
 
 
 function App() {
   return (
     <>
       <div className="app">
-        
+
         
         <main className="main-content">
           <Routes>
@@ -41,10 +42,28 @@ function App() {
             <Route path="/patients/edit/:id" element={<PatientForm />} />
             <Route path="/patients/:id" element={<PatientDetails />} />
 
-            <Route path="/medecins" element={<MedecinsList />} />
-            <Route path="/medecins/add" element={<MedecinForm />} />
-            <Route path="/medecins/edit/:id" element={<MedecinForm />} />
-            <Route path="/medecins/:id" element={<MedecinDetails />} />
+            <Route path="/medecins" element={
+              <PrivateRoute>
+                <RoleGuard role="ADMIN"><MedecinsList/></RoleGuard>
+              </PrivateRoute>
+            } />
+            <Route path="/medecins/add" element={
+              <PrivateRoute>
+                <RoleGuard role="ADMIN"><MedecinForm/></RoleGuard>
+              </PrivateRoute>
+            } />
+            <Route path="/medecins/edit/:id" element={
+              <PrivateRoute>
+                <RoleGuard role="ADMIN"><MedecinForm/></RoleGuard>
+              </PrivateRoute>
+            } />
+            <Route path="/medecins/:id" element={
+              <PrivateRoute>
+                  <RoleGuard role="ADMIN">
+                      <MedecinDetails />
+                  </RoleGuard>
+              </PrivateRoute>
+            } />
 
             <Route path="/rendezvous" element={<RendezVousList />} />
             <Route path="/rendezvous/add" element={<RendezVousForm />} />

@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import "./Login.css";
+import "./login.css";
 import { Link } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 function Login() {
 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        username: "",
+        nom: "",
         password: ""
     });
 
@@ -24,34 +25,30 @@ function Login() {
 
     };
 
-
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
         try {
+            const response = await api.post("/auth/login", formData);
 
-            const response = await api.post(
-                "/auth/login",
-                formData
-            );
+            const token = response.data.token;
 
-            localStorage.setItem(
-                "token",
-                response.data.token
-            );
+            localStorage.setItem("token", token);
 
-            localStorage.setItem(
-                "username",
-                response.data.username
-            );
+            const decoded = jwtDecode(token);
+
+            console.log(decoded);
+
+            localStorage.setItem("nom", decoded.sub);
 
             localStorage.setItem(
                 "role",
-                response.data.role
+                decoded.role[0].authority.replace("ROLE_", "")
             );
 
             navigate("/dashboard");
+
 
         } catch (error) {
 
@@ -83,7 +80,7 @@ function Login() {
 
                 <input
                     type="text"
-                    name="username"
+                    name="nom"
                     placeholder="Nom d'utilisateur"
                     onChange={handleChange}
                 />
